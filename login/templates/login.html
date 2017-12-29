@@ -1,0 +1,43 @@
+{% load static %}
+<html >
+  <head>
+    <title>Login Sistem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+    {% include "include/head.html" %}
+  </head>
+<body>
+  
+<div class="container">
+  <div class="info">
+    <h1>Login Sistem</h1>
+  </div>
+</div>
+<div class="form" style="padding-left: 20; padding-right: 20px;">
+  <img src="{% static "img/lock.png" %}" style="width: 150px; height: 150px;">
+  <form class="login-form" action="" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="text" placeholder="Username" name="username" />
+    <input type="password" placeholder="Password" name="password" />
+    <button>Login</button>
+  </form>
+    <div style="padding-top: 15px; padding-bottom: 30px;">
+      <a data-toggle="modal" href='#modal_registrasi'>Registrasi Alumni</a>
+      {% include "registrasi.html" %}
+    </div>
+  </div>
+  <div class="footer">
+    <a data-toggle="modal" href='#modal_help'>Help</a> | <a data-toggle="modal" href='#modal_about' href="">About</a>
+    {% include "help.html" %}
+    {% include "about.html" %}
+  </div>
+</div>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="{% static "login/js/index.js" %}"></script>
+</body>
+</html>
+{% include "include/js.html" %}

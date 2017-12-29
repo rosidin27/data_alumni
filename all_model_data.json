@@ -1,0 +1,10 @@
+[
+  {
+    "model": "admin.Admin",
+    "fields": {
+      "username": "admin",
+      "nama": "Admin Sistem",
+      "password": "c3284d0f94606de1fd2af172aba15bf3"
+    }
+  }
+]

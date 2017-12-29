@@ -1,0 +1,67 @@
+<div class="table-responsive">
+    <div class="modal-body">
+        <table border="0px" style="width: 100%">
+            <tr>
+                <td style="width: 190px"><b>NPM</b></td>
+                <td style="padding-right: 10px; padding-top:5px; width: 5px;">:</td>
+                <td style="padding-top: 5px;">{{ get.mhs.npm }}</td>
+                <td rowspan="9" style="padding-top: 5px; width: 250px; text-align: right;">
+                    <img src="{% if get.mhs.poto == '' %} {{ get.HOST }}/static/img/foto/no-img.jpg {% else %} {{ get.HOST }}/{{ get.mhs.poto }} {% endif %}" class="img img-thumbnail foto-view">
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 190px"><b>Email</b></td>
+                <td style="padding-right: 10px; padding-top:5px; width: 5px;">:</td>
+                <td style="padding-top: 5px;">{{ get.mhs.email }}</td>
+            </tr>
+            <tr>
+                <td style="width: 190px"><b>Nama</b></td>
+                <td style="padding-right: 10px; padding-top:5px; width: 5px;">:</td>
+                <td style="padding-top: 5px;">{{ get.mhs.nama }}</td>
+            </tr>
+            <tr>
+                <td style="width: 190px"><b>Tgl Lahir</b></td>
+                <td style="padding-right: 10px; padding-top:5px; width: 5px;">:</td>
+                <td style="padding-top: 5px;">{{ get.mhs.tgl_lahir }}</td>
+            </tr>
+            <tr>
+                <td style="width: 190px"><b>Gender</b></td>
+                <td style="padding-right: 10px; padding-top:5px; width: 5px;">:</td>
+                <td style="padding-top: 5px;">{% if get.mhs.jk == 'L' %} Laki-laki {% elif get.mhs.jk == 'P' %} Perempuan {% endif %}</td>
+            </tr>
+            <tr>
+                <td style="width: 190px"><b>Prodi</b></td>
+                <td style="padding-right: 10px; padding-top:5px; width: 5px;">:</td>
+                <td style="padding-top: 5px;">{% if get.mhs.prodi == 'mi' %} D3 Manajemen Informatika {% elif get.mhs.prodi == 'ilkom' %} S1 Ilmu Komputer {% endif %}</td>
+            </tr>
+            <tr>
+                <td style="width: 190px"><b>Angkatan</b></td>
+                <td style="padding-right: 10px; padding-top:5px; width: 5px;">:</td>
+                <td style="padding-top: 5px;">{{ get.mhs.angkatan }}</td>
+            </tr>
+            <tr>
+                <td style="width: 190px"><b>Tahun Lulus</b></td>
+                <td style="padding-right: 10px; padding-top:5px; width: 5px;">:</td>
+                <td style="padding-top: 5px;">{{ get.mhs.tahun_lulus }}</td>
+            </tr>
+            <tr>
+                <td style="width: 190px"><b>No. Telepon</b></td>
+                <td style="padding-right: 10px; padding-top:5px; width: 5px;">:</td>
+                <td style="padding-top: 5px;">{{ get.mhs.no_telp }}</td>
+            </tr>
+            <tr style="border-bottom:1pt solid #e7eaec;">
+                <td style="width: 190px"><b>Alamat</b></td>
+                <td style="padding-right: 10px; padding-top:0px; width: 5px;">:</td>
+                <td colspan="2" style="padding-top: 8px; padding-bottom: 8px">{{ get.mhs.alamat }}</td>
+            </tr>
+            <tr>
+                <td valign="top" style="padding-top: 8px;"><b>Biografi</b></td>
+                <td valign="top" style="padding-right: 10px; padding-top: 8px; width: 5px;"></td>
+                
+            </tr>
+            <tr>
+                <td colspan="4" style="padding-top: 5px;"><textarea style="border:0px; width: 100%; height: 200px">{{ get.mhs.biografi }}</textarea></td>
+            </tr>
+        </table>
+    </div>
+</div>

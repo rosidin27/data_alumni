@@ -1,0 +1,105 @@
+<!-- <?php
+    if(isset($_GET['menu'])){
+        $nav_menu = $_GET['menu'];
+    }else{
+        $nav_menu = "index";
+    }
+    $nama_user = "Undefined";
+    if(isset($_SESSION['username']) && isset($_SESSION['level'])){
+        $u = PdoSelect("SELECT *FROM tbl_akses WHERE level = '".$_SESSION['level']."' and username = '".filter($_SESSION['username'])."'");
+        $nama_user = $u['nama_user'];
+    }
+    
+?> -->
+
+
+{% load static %}
+<nav class="navbar-default navbar-static-side" role="navigation" style="position: fixed;">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element" style="text-align: center"> 
+                    <span>
+                        <img alt="image" class="{% if get.session.level == 'alumni' %} img img-circle foto-profil {% endif %}" src="{% if get.session.level == 'alumni' %} {% if get.session.poto != '' %} {{ HOST }}/{{ get.session.poto }} {% else %} {% static 'img/foto/no-img.jpg' %} {% endif %} {% else %} {% static 'img/admin.png' %} {% endif %}"   style="{% if get.session.level != 'alumni' %} width: 64px;height: 64px; {% endif %}" />
+                    </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" >
+                        <span class="clear">
+                            <span class="text-muted text-xs block" style="padding-top: 10px;">
+                                <strong>{{ get.session.nama_user }}</strong> <b class="caret"></b>
+                            </span>
+                        </span> 
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        {% if get.session.level == 'alumni' %}
+                            <li><a href="{{ get.HOST }}/{{ get.session.level }}/profil">Change Profil</a></li>
+                        {% endif %}
+                        <li><a href="{{ get.HOST }}/{{ get.session.level }}/password">Change Password</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ get.HOST }}/logout">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    <i class="fa fa-gear"></i>
+                </div>
+            </li>
+            <li {% if get.label == 'all' or get.label == '' %} class='active' {% endif %}>
+                <a href="{{ get.HOST }}/{{ get.session.level }}/?prodi=all"><i class="fa fa-users"></i> <span class="nav-label">Semua Data Alumni</span></a>
+            </li>
+            <li {% if get.label == 'mi' %} class='active' {% endif %}>
+                <a href="{{ get.HOST }}/{{ get.session.level }}/?prodi=mi"><i class="fa fa-user"></i> <span class="nav-label">D3 MI</span></a>
+            </li>
+            <li {% if get.label == 'ilkom' %} class='active' {% endif %}>
+                <a href="{{ get.HOST }}/{{ get.session.level }}/?prodi=ilkom"><i class="fa fa-user"></i> <span class="nav-label">S1 Ilmu Komputer</span></a>
+            </li>
+            
+        </ul>
+    </div>
+</nav>
+
+<!-- <?php
+    function staf($nav_menu){ ?>
+        <li <?php if($nav_menu=="surat"){ echo "class='active'"; } ?>>
+            <a href="?menu=surat"><i class="fa fa-envelope"></i> <span class="nav-label">Surat</span></a>
+        </li>
+    <?php
+    }
+    function admin($nav_menu){ ?>
+        <li <?php if($nav_menu=="pengguna"){ echo "class='active'"; } ?>>
+            <a href="?menu=pengguna"><i class="fa fa-users"></i> <span class="nav-label">Data Pengguna</span></a>
+        </li>
+        <li <?php if($nav_menu=="surat"){ echo "class='active'"; } ?>>
+            <a href="?menu=surat"><i class="fa fa-envelope"></i> <span class="nav-label">Data Surat</span></a>
+        </li>
+        <li <?php if($nav_menu=="kat_jaminan"){ echo "class='active'"; } ?>>
+            <a href="?menu=kat_jaminan"><i class="fa fa-list"></i> <span class="nav-label">Kategori Jaminan</span></a>
+        </li>
+        <li <?php if($nav_menu=="kat_surat"){ echo "class='active'"; } ?>>
+            <a href="?menu=kat_surat"><i class="fa fa-list"></i> <span class="nav-label">Kategori Surat</span></a>
+        </li>
+        <li <?php if($nav_menu=="kantor"){ echo "class='active'"; } ?>>
+            <a href="?menu=kantor"><i class="fa fa-building-o"></i> <span class="nav-label">Kantor</span></a>
+        </li>
+        <li <?php if($nav_menu=="rs"){ echo "class='active'"; } ?>>
+            <a href="?menu=rs"><i class="fa fa-building-o"></i> <span class="nav-label">Rumah Sakit</span></a>
+        </li>
+        <li <?php if($nav_menu=="polres"){ echo "class='active'"; } ?>>
+            <a href="?menu=polres"><i class="fa fa-university"></i> <span class="nav-label">Polres</span></a>
+        </li>
+        </li>
+    <?php
+    }
+
+    function pimpinan($nav_menu){ ?>
+        <li <?php if($nav_menu=="surat"){ echo "class='active'"; } ?>>
+            <a href="?menu=surat"><i class="fa fa-envelope"></i> <span class="nav-label">Surat</span></a>
+        </li>
+    <?php
+    }
+    function rs($nav_menu){ ?>
+        <li <?php if($nav_menu=="surat"){ echo "class='active'"; } ?>>
+            <a href="?menu=surat"><i class="fa fa-envelope"></i> <span class="nav-label">Surat</span></a>
+        </li>
+    <?php
+    }
+
+?> -->

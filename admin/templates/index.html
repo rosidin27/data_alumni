@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% include  "include/head.html" %}
+</head>
+<body>
+	{% include "include/navigation.html" %}
+	<div id="page-wrapper" class="gray-bg">
+		
+		{% include "include/header.html" %}
+		
+		<div class="wrapper wrapper-content animated fadeInRight">
+		    <div class="row">
+		        <div class="col-lg-12">
+		            <div class="ibox float-e-margins">
+		                <div class="ibox-title">
+		                    <h5>{{ get.title }}</h5>
+		                    <div class="ibox-tools">
+		                        <a class="collapse-link">
+		                            <i class="fa fa-chevron-up"></i>
+		                        </a>
+		                        <a class="close-link">
+		                            <i class="fa fa-times"></i>
+		                        </a>
+		                    </div>
+		                </div>
+		                <div class="ibox-content">
+		                	{% if get.action == "list" %}
+		                		{% include "list.html" %}
+		                	{% elif get.action == "edit" %}
+		                		{% include "edit.html" %}
+		                	{% elif get.action == "input" %}
+		                		{% include "input.html" %}
+	                		{% elif get.action == "password" %}
+	                			{% include "password.html" %}
+		                	{% else %}
+		                		{% include "list.html" %}
+		                	{% endif %}
+			           	</div>
+		           	</div>
+		        </div>
+		    </div>
+		</div>
+		{% include "include/footer.html" %}
+		{% include "include/js.html" %}
+	</div>
+</body>
+</html>

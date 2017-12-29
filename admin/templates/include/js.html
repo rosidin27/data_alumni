@@ -1,0 +1,61 @@
+{% load static %}
+<!-- Mainly scripts -->
+	<script src="{% static 'js/jquery-1.8.3.js' %}"></script>
+    <script src="{% static 'js/jquery-2.1.1.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/plugins/metisMenu/jquery.metisMenu.js' %}"></script>
+    <script src="{% static 'js/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+    <script src="{% static 'js/plugins/jeditable/jquery.jeditable.js' %}"></script>
+
+    <script src="{% static 'js/plugins/dataTables/datatables.min.js' %}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{% static 'js/inspinia.js' %}"></script>
+    <script src="{% static 'js/plugins/pace/pace.min.js' %}"></script>
+	<script src="{% static 'js/script.js' %}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#data').DataTable({
+                
+
+            });
+            $(".search_form").hide();
+
+            $(".btn_form_search").click(function(){
+                $('.search_form').slideToggle('slow');
+            });
+
+            /* Init DataTables */
+            var oTable = $('#editable').DataTable();
+
+            /* Apply the jEditable handlers to the table */
+            oTable.$('td').editable( '../example_ajax.php', {
+                "callback": function( sValue, y ) {
+                    var aPos = oTable.fnGetPosition( this );
+                    oTable.fnUpdate( sValue, aPos[0], aPos[1] );
+                },
+                "submitdata": function ( value, settings ) {
+                    return {
+                        "row_id": this.parentNode.getAttribute('id'),
+                        "column": oTable.fnGetPosition( this )[2]
+                    };
+                },
+
+                "width": "90%",
+                "height": "100%"
+            } );
+
+
+        });
+
+        function fnClickAddRow() {
+            $('#editable').dataTable().fnAddData( [
+                "Custom row",
+                "New row",
+                "New row",
+                "New row",
+                "New row" ] );
+
+        }
+    </script>

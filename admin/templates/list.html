@@ -1,0 +1,93 @@
+<a class="btn btn-primary" href='/admin/alumni/input/' style="margin-bottom: 15px; "><span class="fa fa-plus"></span> Input Data</a>
+<div class="table-responsive">
+	<div class="table-responsive">
+		<table class="table table table-hover table-striped" id="data">
+	        <thead>
+	            <tr>
+	                <th>No</th>
+	                <th>NPM</th>
+	                <th>Nama</th>
+	                <th>Gender</th>
+	                <th>Prodi</th>
+	                <th>Telp</th>
+	                <th>Angkatan</th>
+	                <th>Aksi</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+            	{% for data in get.mhsList  %}
+            		<tr>
+            			<td>{{ forloop.counter }} </td>
+            			<td>{{ data.npm }}</td>
+            			<td>{{ data.nama }}</td>
+            			<td>{{ data.jk }}</td>
+            			<td>{% if data.prodi == "mi" %} D3 MI 
+            				{% elif data.prodi == "ilkom" %} S1 Ilmu Komputer 
+            				{% endif %}
+            			</td>
+            			<td>{{ data.no_telp }}</td>
+            			<td>{{ data.angkatan }}</td>
+            			<td>
+            				<a class="btn 
+            					{% if data.verif == 'N' %} 
+            						btn-success 
+            					{% endif %}
+            					{% if data.verif == 'Y' %} 
+            						btn-warning 
+            					{% else %} 
+            						btn-success
+            					{% endif %}" 
+            					data-toggle="modal" href='#verif_{{ data.npm }}' style="margin-bottom: 15px; "><span class="fa fa-ban"></span></a>
+                            <div class="modal fade" id="verif_{{ data.npm }}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Verif Data Alumni</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Apakah anda yakin ingin mengubah status verif data <b>{{ data.npm }} - {{ data.nama }}</b> ? </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="" method="post">
+                                            	{% csrf_token %}
+                    							{{ form }}
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                                                <input type="hidden" name="status" value="{{ data.verif }}">
+                                                <button type="submit" class="btn btn-danger" name="verif" value="{{ data.npm }}">Ya</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            				<a class="btn btn-danger" data-toggle="modal" href='#delete_{{ data.npm }}' style="margin-bottom: 15px; "><span class="fa fa-trash"></span></a>
+                            <div class="modal fade" id="delete_{{ data.npm }}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Hapus Data Alumni</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Apakah anda yakin ingin menghapus data <b>{{ data.npm }} - {{ data.nama }}</b> ? </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="" method="post">
+                                            	{% csrf_token %}
+                    							{{ form }}
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-danger" name="delete" value="{{ data.npm }}">Hapus</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn btn-primary" href='{{ HOST }}/admin/alumni/edit/?npm={{ data.npm }}' style="margin-bottom: 15px; "><span class="fa fa-pencil"></span></a>
+                            <a class="btn btn-info" href='{{ HOST }}/admin/alumni/view/?npm={{ data.npm }}' style="margin-bottom: 15px; "><span class="fa fa-search"></span></a>
+            			</td>
+            		</tr>
+            	{% endfor %}
+	    	</tbody>
+	    </table>
+	</div>
+</div>

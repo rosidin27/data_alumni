@@ -1,0 +1,17 @@
+
+- pip install virtualenv
+- virtualenv myprojek
+- myprojek\Scripts\activate
+- pip install django
+- pip install django mysqlclient
+- pip install --pre django-enumfield==1.3b2
+- pip install Pillow (untuk ImageField pada model)
+- Buat database "alumni" pada phpmyadmin
+- python manage.py makemigrations
+- python manage.py migrate
+- python manage.py collectstatic
+- python manage.py loaddata all_model_data.json (untuk data awal pada table admin)
+- python manage.py runserver
+- buka web dan login sebagai admin
+	-username : admin
+	-password : admin
